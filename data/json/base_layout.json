@@ -1,0 +1,348 @@
+{
+    "keyboard": [
+        {
+            "action": "left",
+            "keys": [
+                "LEFT",
+                "Q"
+            ],
+            "lock": false
+        },
+        {
+            "action": "right",
+            "keys": [
+                "RIGHT",
+                "D"
+            ],
+            "lock": false
+        },
+        {
+            "action": "up",
+            "keys": [
+                "UP",
+                "Z"
+            ],
+            "lock": false
+        },
+        {
+            "action": "down",
+            "keys": [
+                "DOWN",
+                "S"
+            ],
+            "lock": false
+        },
+        {
+            "action": "valid",
+            "keys": [
+                "SPACE"
+            ],
+            "lock": true
+        },
+        {
+            "action": "cancel",
+            "keys": [
+                "ESC",
+                "X"
+            ],
+            "lock": true
+        },
+        {
+            "action": "do",
+            "keys": [
+                "V",
+                "E"
+            ],
+            "lock": true
+        },
+        {
+            "action": "options",
+            "keys": [
+                "F",
+                "A"
+            ],
+            "lock": true
+        },
+        {
+            "action": "start",
+            "keys": [
+                "ENTER"
+            ],
+            "lock": true
+        },
+        {
+            "action": "select",
+            "keys": [
+                "TAB"
+            ],
+            "lock": true
+        },
+        {
+            "action": "l1",
+            "keys": [
+                "DIVIDE"
+            ],
+            "lock": true
+        },
+        {
+            "action": "r1",
+            "keys": [
+                "MULTIPLY"
+            ],
+            "lock": true
+        },
+        {
+            "action": "l2",
+            "keys": [
+                "PAGE_UP"
+            ],
+            "lock": false
+        },
+        {
+            "action": "r2",
+            "keys": [
+                "PAGE_DOWN"
+            ],
+            "lock": false
+        },
+        {
+            "action": "l3",
+            "keys": [
+                "o"
+            ],
+            "lock": false
+        },
+        {
+            "action": "r3",
+            "keys": [
+                "p"
+            ],
+            "lock": false
+        },
+        {
+            "action": "0",
+            "keys": [
+                "NUM0"
+            ],
+            "lock": true
+        },
+        {
+            "action": "1",
+            "keys": [
+                "NUM1"
+            ],
+            "lock": true
+        },
+        {
+            "action": "2",
+            "keys": [
+                "NUM2"
+            ],
+            "lock": true
+        },
+        {
+            "action": "3",
+            "keys": [
+                "NUM3"
+            ],
+            "lock": true
+        },
+        {
+            "action": "4",
+            "keys": [
+                "NUM4"
+            ],
+            "lock": true
+        },
+        {
+            "action": "5",
+            "keys": [
+                "NUM5"
+            ],
+            "lock": true
+        },
+        {
+            "action": "6",
+            "keys": [
+                "NUM6"
+            ],
+            "lock": true
+        },
+        {
+            "action": "7",
+            "keys": [
+                "NUM7"
+            ],
+            "lock": true
+        },
+        {
+            "action": "8",
+            "keys": [
+                "NUM8"
+            ],
+            "lock": true
+        },
+        {
+            "action": "9",
+            "keys": [
+                "NUM9"
+            ],
+            "lock": true
+        }
+    ],
+    "gamepad": [
+        {
+            "action": "left",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.LX",
+            "shortcode":"LX",
+            "threshold": -0.5,
+            "lock": false
+        },
+        {
+            "action": "right",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.LX",
+            "threshold": 0.5,
+            "lock": false
+        },
+        {
+            "action": "up",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.LY",
+            "threshold": -0.5,
+            "lock": true
+        },
+        {
+            "action": "down",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.LY",
+            "threshold": 0.5,
+            "lock": true
+        },
+        {
+            "action": "left",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.RX",
+            "threshold": -0.5,
+            "lock": false
+        },
+        {
+            "action": "right",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.RX",
+            "threshold": 0.5,
+            "lock": false
+        },
+        {
+            "action": "up",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.RY",
+            "threshold": -0.5,
+            "lock": false
+        },
+        {
+            "action": "down",
+            "type": "axes",
+            "code": "me.input.GAMEPAD.AXES.RY",
+            "threshold": 0.5,
+            "lock": false
+        },
+        {
+            "action": "left",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.LEFT",
+            "lock": false
+        },
+        {
+            "action": "right",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.RIGHT",
+            "lock": false
+        },
+        {
+            "action": "up",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.UP",
+            "lock": true
+        },
+        {
+            "action": "down",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.DOWN",
+            "lock": true
+        },
+        {
+            "action": "valid",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.FACE_1",
+            "lock": false
+        },
+        {
+            "action": "cancel",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.FACE_2",
+            "lock": false
+        },
+        {
+            "action": "do",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.FACE_3",
+            "lock": false
+        },
+        {
+            "action": "options",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.FACE_4",
+            "lock": false
+        },
+        {
+            "action": "start",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.START",
+            "lock": false
+        },
+        {
+            "action": "select",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.SELECT",
+            "lock": false
+        },
+        {
+            "action": "l1",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.L1",
+            "lock": false
+        },
+        {
+            "action": "l2",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.L2",
+            "lock": false
+        },
+        {
+            "action": "r1",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.R1",
+            "lock": false
+        },
+        {
+            "action": "r2",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.R2",
+            "lock": false
+        },
+        {
+            "action": "l3",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.L3",
+            "lock": false
+        },
+        {
+            "action": "r3",
+            "type": "buttons",
+            "code": "me.input.GAMEPAD.BUTTONS.R3",
+            "lock": false
+        }
+    ]
+}

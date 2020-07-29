@@ -135,7 +135,7 @@ module.exports = function(grunt) {
           src: ['data/img/**/*.png','data/fonts/**/*.png'],
           type: 'image'
         },{
-          src: ['data/img/**/*.json'],
+          src: ['data/img/**/*.json','data/json/**/*.json'],
           type: 'json'
         },{
           src: ['data/map/**/*.tmx', 'data/map/**/*.json'],
