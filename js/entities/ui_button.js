@@ -45,4 +45,18 @@ game.StartButton = game.TextButton.extend({
         }
     },
 
+});
+game.HudButton = game.TextButton.extend({
+
+    onSelect:function(){
+        if (!this.selected)
+        {
+        this.selected = true;
+        }
+        else
+        {
+            me.state.change(me.state.DEBUGHUD);
+        }
+    },
+
 })

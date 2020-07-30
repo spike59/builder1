@@ -26,11 +26,12 @@ game.load_layout = function (layout) {
 
     }
     me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
-        game.currentScreen.doAction(action, edge);
+        
+        game.currentScreen.addAction(action);
     });
 
     me.event.subscribe(me.event.KEYUP, function (action, keyCode /*, edge */) {
-        game.currentScreen.stopAction(action);
+        game.currentScreen.removeAction(action);
     });
 
 

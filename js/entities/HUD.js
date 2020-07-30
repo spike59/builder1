@@ -20,8 +20,12 @@ game.HUD.Container = me.Container.extend({
         // give a name
         this.name = "HUD";
 
-        // add our child score object at the top left corner
-        this.addChild(new game.HUD.ScoreItem(5, 5));
+        this.addChild(new me.BitmapText(10, 100, {font:"wood_32x32", text:"HUD item"}));
+    },
+    update:function(dt){
+        this._super(me.Container,"update",[dt]);
+        //console.log("update hud and game mecanics");
+        game.currentScreen.doActions();
     }
 });
 
@@ -29,7 +33,7 @@ game.HUD.Container = me.Container.extend({
 /**
  * a basic HUD item to display score
  */
-game.HUD.ScoreItem = me.Renderable.extend({
+game.HUD.ScoreItem = me.Container.extend({
     /**
      * constructor
      */
@@ -37,10 +41,12 @@ game.HUD.ScoreItem = me.Renderable.extend({
 
         // call the parent constructor
         // (size does not matter here)
-        this._super(me.Renderable, 'init', [x, y, 10, 10]);
-
+        this._super(me.Container, 'init');
+        
         // local copy of the global score
         this.score = -1;
+        this.txt = this.addChild(new me.BitmapText(10, 10, {font:"wood_32x32", text:"score " + this.score}));
+        
     },
 
     /**
@@ -51,16 +57,11 @@ game.HUD.ScoreItem = me.Renderable.extend({
         // return true if the score has been updated
         if (this.score !== game.data.score) {
             this.score = game.data.score;
+            this.txt.setText("score" + this.score);
             return true;
         }
         return false;
-    },
-
-    /**
-     * draw the score
-     */
-    draw : function (context) {
-        // draw it baby !
     }
+
 
 });

@@ -195,7 +195,6 @@
             "action": "left",
             "type": "axes",
             "code": "me.input.GAMEPAD.AXES.LX",
-            "shortcode":"LX",
             "threshold": -0.5,
             "lock": false
         },
