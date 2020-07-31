@@ -11,7 +11,7 @@ game.PlayScreen = me.Stage.extend({
         this.level = new me.Container();
         this.level.name = "level";
         me.game.onLevelLoaded = this.onLevelLoaded.bind(this);
-        me.levelDirector.loadLevel("default_map1", { container: this.level, setViewportBounds: true }); 
+        me.levelDirector.loadLevel("default_map1", { container: this.level, setViewportBounds:false}); 
         //prepare actions object
         this.actions={};
         //load start actions
@@ -20,7 +20,11 @@ game.PlayScreen = me.Stage.extend({
     },
     onLevelLoaded: function () {
         //add the level to the world
+        this.level.anchorPoint.set(0,0);
+ 
+        //me.game.viewport.anchorPoint.set(0,0);
         this.currentLevel = me.game.world.addChild(this.level, 1);
+        console.log("screen",this);
         //add the hud to the screen     
         this.HUD = me.game.world.addChild( new game.HUD.Container(),2);
     }, //fin onLevelLoaded
