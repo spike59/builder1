@@ -1,39 +1,39 @@
-game.PlayScreen = me.Stage.extend({
+game.BuildScreen = me.Stage.extend({
 
     onResetEvent: function() {
+        console.log("build screen");
         //shortcut to acces current screen
         game.currentScreen  = this;
         //load game data
         game.data.score = 0;
         //add bg color while loading level
-        this.bg_color = me.game.world.addChild(new me.ColorLayer("bg_color", new me.Color(60,90,90,1)));
-        //load level
-        this.level = new me.Container();
-        this.level.name = "level";
-        me.game.onLevelLoaded = this.onLevelLoaded.bind(this);
-        me.levelDirector.loadLevel("default_map1", { container: this.level, setViewportBounds:false}); 
+        //this.bg_color = me.game.world.addChild(new me.ColorLayer("bg_color", new me.Color(60,90,90,1)),0);
         //prepare actions object
         this.actions={};
         //load start actions
         this.actions = game.actionsPacks.start;
         this.currentActions=[];
-    },
-    onLevelLoaded: function () {
-        //add the level to the world
-        this.level.anchorPoint.set(0,0);
- 
+        
         //add the base level to the screen relief data
-        this.currentLevel = me.game.world.addChild(this.level, 1);
+        this.currentLevel = me.game.world.addChild(new game.tools.build_relief_map(),1);
+        //this.currentLevel.addStuff();
+        this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
+        this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
         //load the game data
 
         //add the game data to the screen
-      
+        
+        //add characters to the screen
+
+        //folow the cursor
+
+
         //add the hud to the screen     
-        this.HUD = me.game.world.addChild( new game.HUD.Container(),2);
+        this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
         //add th controller layer to the screen
         this.controller = me.game.world.addChild(new game.ScreenController());
         //start the game cycles
-
+        
         console.log("screen",this);
     }, //fin onLevelLoaded
     addAction:function(a){

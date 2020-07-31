@@ -34,6 +34,9 @@ var game = {
         
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.BUILD =  me.state.USER + 1;
+        me.state.set(me.state.BUILD, new game.BuildScreen());
+        me.state.DEBUGHUD =  me.state.USER + 2;
         me.state.set(me.state.DEBUGHUD, new game.hudTestScreen());
         this.load_layout("base_layout");
         // add our player entity in the entity pool

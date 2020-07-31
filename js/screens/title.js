@@ -14,7 +14,14 @@ game.TitleScreen = me.Stage.extend({
                 text: "start",
                 value: "START"
             }));
-        this.hudButton = me.game.world.addChild(new game.HudButton(midX, midY+32,
+        this.startButton2 = me.game.world.addChild(new game.StartButton2(midX, midY+32,
+            {
+                font: "wood_32x32",
+                font_size: 32,
+                text: "start2",
+                value: "START"
+            }));
+        this.hudButton = me.game.world.addChild(new game.HudButton(midX, midY + 64,
             {
                 font: "wood_32x32",
                 font_size: 32,
@@ -29,6 +36,8 @@ game.TitleScreen = me.Stage.extend({
      *  action to perform when leaving this screen (state change)
      */
     onDestroyEvent: function () {
+        me.game.world.removeChild(this.hudButton);
+        me.game.world.removeChild(this.startButton2);
         me.game.world.removeChild(this.startButton);
         me.game.world.removeChild(this.bg_color);
     }

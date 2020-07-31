@@ -47,6 +47,7 @@ game.LayerTest = me.Container.extend({
 game.ScreenController = me.Container.extend({
     init: function (params) {
         console.log("init controller layer");
+        game.currentController = this;
         this.name = "controller_container";
         this.w = me.video.renderer.getWidth();
         this.h = me.video.renderer.getHeight();
@@ -58,14 +59,14 @@ game.ScreenController = me.Container.extend({
         this.anchorPoint.set(0, 0);
         //this.cursor =this.addChild(new game.Cursor(30,30));
         //this.test = this.addChild(new game.Cursor(100,100));
-        //this.test2 = this.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"score:"}),3);
+        this.test2 = this.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"score:"}),3);
         
         //add screen control events
         me.event.subscribe(me.event.POINTERMOVE, function(event) {
             var x = Math.round(event.gameScreenX);
             var y = Math.round(event.gameScreenY);
-            var z = game.currentScreen.test2.pos.z;
-            game.currentScreen.test2.pos.set(x, y , z);
+            var z = game.currentController.test2.pos.z;
+            game.currentController.test2.pos.set(x, y , z);
             //console.log("update cursor pos",game.currentScreen.controller.cursor);
         });
      },

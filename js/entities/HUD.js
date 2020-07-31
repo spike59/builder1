@@ -8,6 +8,7 @@ game.HUD = game.HUD || {};
 game.HUD.Container = me.Container.extend({
 
     init: function() {
+        console.log("add hud");
         // call the constructor
         this._super(me.Container, 'init');
 
@@ -25,6 +26,7 @@ game.HUD.Container = me.Container.extend({
     update:function(dt){
         this._super(me.Container,"update",[dt]);
         //console.log("update hud and game mecanics");
+        //TODO a placer dans le screenController
         game.currentScreen.doActions();
     }
 });

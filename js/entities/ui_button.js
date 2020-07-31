@@ -46,6 +46,21 @@ game.StartButton = game.TextButton.extend({
     },
 
 });
+game.StartButton2 = game.TextButton.extend({
+
+    onSelect:function(){
+        if (!this.selected)
+        {
+        this.selected = true;
+        }
+        else
+        {
+            console.log("got to play 2");
+            me.state.change(me.state.BUILD);
+        }
+    },
+
+});
 game.HudButton = game.TextButton.extend({
 
     onSelect:function(){
@@ -59,4 +74,4 @@ game.HudButton = game.TextButton.extend({
         }
     },
 
-})
+});
