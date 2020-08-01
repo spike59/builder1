@@ -8,6 +8,8 @@ game.CharacterEntity = me.Container.extend({
             name:"bob",
             weight:50,
             height:1.80,
+            age:32,
+            sexe:"male",
             jobs:[
                 "transporter",
                 "cook",
@@ -20,7 +22,11 @@ game.CharacterEntity = me.Container.extend({
                 "farmer",
                 "enginner",
                 "scientist",
-                "architect"
+                "architect",
+                "history",
+            ],
+            jobsLevels:[
+                1,1,1,1,1,1,1,1,1,1,1,1,1
             ],
             state:{
                 happyness:50,
@@ -37,8 +43,13 @@ game.CharacterEntity = me.Container.extend({
                 sick:false,
                 sad:false
             },
-            wellness:{
-
+            health:{
+                physic:[
+                    "no_left_arm"
+                ],
+                mental:[
+                    "pyroman"
+                ]
             }
         };
         this._super(me.Container,"init");
@@ -92,6 +103,9 @@ game.CharacterRenderable = me.Sprite.extend({
         this.label = settings.label;
 
 
+    },
+    onClic:function(){
+        //display character infos on the screen
     },
     change:function(new_region){
     console.log("change",new_region);

@@ -39,6 +39,7 @@ game.tools.build_relief_map = me.Container.extend({
                 //this.addChild(new game.GroundCell(j*32,i*32),i)
             }
         }
+        //TODO BUGGY stuff
         //add water
         var water_options = {
             "min_spots":2,

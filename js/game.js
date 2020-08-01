@@ -5,10 +5,22 @@ var game = {
     // an object where to store game information
     data : {
         // score
-        score : 0
+        score : 0,
+        time:{
+            year:0,
+            month:0,
+            day:0,
+            hour:0,
+            minut:0
+        },
+        options:{
+            speed:1
+        }
     },
-
-
+    devData:{
+        uiUnit:32,
+        baseSpeed:500
+    },
     // Run on page load.
     "onload" : function () {
         // Initialize the video.
