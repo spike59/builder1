@@ -16,9 +16,8 @@ game.BuildScreen = me.Stage.extend({
         
         //add the base level to the screen relief data
         this.currentLevel = me.game.world.addChild(new game.tools.build_relief_map(),1);
-        //this.currentLevel.addStuff();
-        this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
-        this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
+
+
         //load the game data
 
         //add the game data to the screen
@@ -26,8 +25,10 @@ game.BuildScreen = me.Stage.extend({
         //add characters to the screen
 
         //folow the cursor
-
-
+        
+        //tests stuff
+        this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
+        this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
         //add the hud to the screen     
         this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
         //add th controller layer to the screen
