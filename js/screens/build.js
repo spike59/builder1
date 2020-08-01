@@ -23,9 +23,9 @@ game.BuildScreen = me.Stage.extend({
         //add the game data to the screen
         
         //add characters to the screen
+        game.tools.add_characters(this.currentLevel);
 
-        //folow the cursor
-        
+
         //tests stuff
         this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
         this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
@@ -33,6 +33,8 @@ game.BuildScreen = me.Stage.extend({
         this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
         //add th controller layer to the screen
         this.controller = me.game.world.addChild(new game.ScreenController());
+        //folow the cursor
+
         //start the game cycles
         
         console.log("screen",this);

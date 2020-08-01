@@ -30,7 +30,7 @@ var game = {
         game.textures = {};
 
         game.utils.load_texture_level("texture_ui01");
-        
+        game.utils.load_texture_level("character_test");
         
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());

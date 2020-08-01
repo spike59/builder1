@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="17">
+ <editorsettings>
+  <export target="lvl_character_test.json" format="json"/>
+ </editorsettings>
+ <objectgroup id="3" name="frames">
+  <object id="1" name="character_base_up_01" x="0" y="0" width="32" height="32"/>
+  <object id="2" name="character_base_up_02" x="32" y="0" width="32" height="32"/>
+  <object id="3" name="character_base_up_03" x="64" y="0" width="32" height="32"/>
+  <object id="4" name="character_base_up_04" x="96" y="0" width="32" height="32"/>
+  <object id="5" name="character_base_down_01" x="0" y="32" width="32" height="32"/>
+  <object id="6" name="character_base_down_02" x="32" y="32" width="32" height="32"/>
+  <object id="7" name="character_base_down_03" x="64" y="32" width="32" height="32"/>
+  <object id="8" name="character_base_down_04" x="96" y="32" width="32" height="32"/>
+  <object id="9" name="character_base_right_01" x="0" y="64" width="32" height="32"/>
+  <object id="11" name="character_base_right_02" x="32" y="64" width="32" height="32"/>
+  <object id="12" name="character_base_right_03" x="64" y="64" width="32" height="32"/>
+  <object id="13" name="character_base_right_04" x="96" y="64" width="32" height="32"/>
+  <object id="14" name="character_base_left_01" x="0" y="96" width="32" height="32"/>
+  <object id="10" name="character_base_left_02" x="32" y="96" width="32" height="32"/>
+  <object id="15" name="character_base_left_03" x="64" y="96" width="32" height="32"/>
+  <object id="16" name="character_base_left_04" x="96" y="96" width="32" height="32"/>
+ </objectgroup>
+ <imagelayer id="2" name="texture">
+  <image source="../img/character_test.png" width="128" height="128"/>
+ </imagelayer>
+</map>

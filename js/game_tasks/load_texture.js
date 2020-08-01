@@ -3,8 +3,17 @@ game.utils = game.utils || {};
 game.utils.load_texture_level = function (texture_name, pivot) {
     //build tool
     var data = {
-        frames: []
-    };
+        "frames": [],
+        "meta": {
+          "app": "spike texturepacker",
+          "version": "1.0",
+          "image": "UI_Assets.png",
+          "format": "INDEXED",
+          "size": { "w": 1024, "h": 1024 },
+          "scale": "1",
+          "smartupdate": "$TexturePacker:SmartUpdate:1f7005d38569aab218dc3997aecb68e5:9b74ecbd05a68429ea009da231f6aae1:789186d00ba8d6b41c6c669108d18494$"
+        }
+      };
     var texture_pivot = pivot || { "x": 0.5, "y": 0.5 };
 
     console.log("loading texture " + texture_name);
