@@ -1,6 +1,6 @@
 //character entity next melon will remove entity class and only use renderable
 game.CharacterEntity = me.Container.extend({
-    init:function(){
+    init:function(cellX,cellY){
         this.data = {
             fieldOfView:5,
             speed:5,
@@ -52,7 +52,15 @@ game.CharacterEntity = me.Container.extend({
                 ]
             }
         };
-        this._super(me.Container,"init");
+        this.currentCell = {
+            x:cellX,
+            y:cellY
+        };
+        var x = cellX*32;
+        var y = cellY*32+32;
+        this._super(me.Container,"init",[x,y,32,32]);
+        this.anchorPoint.set(0, 1);
+        
         //this.renderable = this.addChild(new game.WaterCell(128,128));
         console.log("textures",game.textures);
         console.log("texture perso",game.textures.character_test);
@@ -60,16 +68,23 @@ game.CharacterEntity = me.Container.extend({
         this.renderableData = game.textures.character_test.createAnimationFromName(
             ["character_base_down_01","character_base_down_02","character_base_down_03","character_base_down_04"]
         );
-        this.renderableData.anchorPoint.set (0,0);
+        this.renderableData.anchorPoint.set (0,1);
         this.renderableData.addAnimation("walk",["character_base_down_01","character_base_down_02","character_base_down_03","character_base_down_04"],200);
         this.renderableData.setCurrentAnimation("walk");
-        this.renderableData.pos.x =128;
-        this.renderableData.pos.y =128;
+        
+        //this.renderableData.pos.x =128;
+        //this.renderableData.pos.y =128;
         this.renderable2 = this.addChild(this.renderableData);
     },
     update:function(dt){
         this._super(me.Container,"update",[dt]);
-
+        //this.pos.z = this.currentCell.y *100 +5;
+    },
+    draw:function(renderer){
+        
+        renderer.setColor('#312618');
+        renderer.strokeRect(this.x,this.y,32,32);
+        this._super(me.Container, "draw",[renderer]);   
     }
 });
 game.CharacterRenderable = me.Sprite.extend({
@@ -93,7 +108,7 @@ game.CharacterRenderable = me.Sprite.extend({
         this.region = game.textures.character_test.getRegion("character_base_down_01");
         
 
-        this.anchorPoint.set(0.5, 0.5);
+        this.anchorPoint.set(0, 0);
         this.setOpacity(1);
 
         // this.font = new me.Font("kenpixel", 12, "black");

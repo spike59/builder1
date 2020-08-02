@@ -16,7 +16,7 @@ game.WaterCell = me.Renderable.extend({
     //     return true;
     // },
     draw:function(renderer){
-        var color = 
+        
         renderer.setColor('#21357f');
         renderer.fillRect(this.x,this.y,32,32);
     }
