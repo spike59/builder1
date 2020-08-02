@@ -75,7 +75,11 @@ game.tools.build_relief_map = me.Container.extend({
         var trees_options = {
             max: 50,
             ages: 3
-        }
+        };
+        var grass_options ={
+            max:50,
+            models:2
+        };
         //add the trees to the ground cells only
         for (var i = 0; i < 32; i++) {
             //pour chaque ligne en partant du haut
@@ -87,6 +91,16 @@ game.tools.build_relief_map = me.Container.extend({
                 if (d.ground.type == "GroundCell") {
                     console.log("case ok add tree");
                     //si c est du sol on ajoute un layer d arbre en fonction du purcentage de remplissage
+                    if (Math.random() * 100 < grass_options.max) {
+                        var model = Math.floor(Math.random() * grass_options.models)+1;
+                        var grass = {
+                            type: "GrassCell",
+                            settings: {
+                                model: model
+                            }
+                        };
+                        data.tiles[i][j].layers.push(grass);
+                    }
                     if (Math.random() * 100 < trees_options.max) {
                         var age = Math.floor(Math.random() * trees_options.ages)+1;
                         var tree = {
@@ -109,14 +123,14 @@ game.tools.build_relief_map = me.Container.extend({
             for (var j = 0; j < 32; j++) {
                 //pour chaque cell de la ligne
                 var d = data.tiles[i][j]
-                this.addChild(new game[d.ground.type](j * 32, i * 32), i);
+                this.addChild(new game[d.ground.type](j * 32, i * 32), i*100);
                 if (d.layers.length>0)
                 {
                     for (var z =0 ;z<d.layers.length;z++)
                     {
                         
                         console.log("add tree",d.layers[z].type);
-                        this.addChild(new game[d.layers[z].type](j * 32, i * 32,d.layers[z].settings),i+1);
+                        this.addChild(new game[d.layers[z].type](j * 32, i * 32,d.layers[z].settings),i*100+1+z);
                     }
                 }
                 //this.addChild(new game.GroundCell(j*32,i*32),i);

@@ -19,5 +19,7 @@ game.GroundCell = me.Renderable.extend({
         var color = 
         renderer.setColor('#744b16');
         renderer.fillRect(this.x,this.y,32,32);
+        //renderer.setColor('#312618');
+        //renderer.strokeRect(this.x,this.y,32,32);        
     }
 });

@@ -75,6 +75,6 @@ game.ScreenController = me.Container.extend({
             newTime.year = t.year;
         }
         game.data.time = newTime;
-        console.log("NEW TIME",game.data.time);
+        //console.log("NEW TIME",game.data.time);
     }
 });
