@@ -19,6 +19,7 @@ game.ScreenController = me.Container.extend({
         this.cursor = this.addChild(new me.BitmapText(200, 200, { font: "wood_32x32", text: "cursor" }), 3);
         
         //time loop init
+        this.timeId=0;
         this.year = 0;
         this.day = 0;
         this.hour = 0;
@@ -46,9 +47,10 @@ game.ScreenController = me.Container.extend({
     },
     updateTime:function(){
         //TODO a deplacer dans le clock panel
-        console.log("update TIME");
+        //console.log("update TIME");
         var newTime={};
         var t = game.data.time;
+        newTime.timeId = t.timeId+1;
         if (t.minut >=60)
         {
             newTime.minut=0;
