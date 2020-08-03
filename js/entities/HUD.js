@@ -27,7 +27,7 @@ game.HUD.Container = me.Container.extend({
         this._super(me.Container,"update",[dt]);
         //console.log("update hud and game mecanics");
         //TODO a placer dans le screenController
-        game.currentScreen.doActions();
+        //game.currentScreen.doActions();
     }
 });
 

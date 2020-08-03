@@ -20,6 +20,7 @@ game.ClockPanel = me.Container.extend({
             year:0
         };
         //this.test = this.addChild(new me.BitmapText(10, 0, {font:"wood_32x32", text:"clock test"}));
+        //not displayed if x=0 so x=10 -> need some margin
         this.timeDisplay = this.addChild(new me.BitmapText(10, 0, {font:"wood_32x32", text:"day" + this.time.day + "\n\n" + this.time.hour + ":"+ this.time.minut}));
         
     },

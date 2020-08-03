@@ -11,12 +11,7 @@ game.ScreenController = me.Container.extend({
         // use screen coordinates
         this.floating = true;
         this.anchorPoint.set(0, 0);
-        this.alwaysUpdate = true;
-        //this.cursor =this.addChild(new game.Cursor(30,30));
-        //this.test = this.addChild(new game.Cursor(100,100));
-        
-        //cursor object init
-        this.cursor = this.addChild(new me.BitmapText(200, 200, { font: "wood_32x32", text: "cursor" }), 3);
+        this.alwaysUpdate = true;       
         
         //time loop init
         this.timeId=0;
@@ -25,9 +20,15 @@ game.ScreenController = me.Container.extend({
         this.hour = 0;
         this.minut = 0;
         //clock on mid left to let debug panel visible
-        var midY = this.h/2-64;//clock panel height =128 then -64
+        var midY = this.h/2-64;//clock panel height =128 then -64 
         this.clock = this.addChild(new game.ClockPanel(0,midY));
-        //add screen control events
+        
+        this.menu = this.addChild(new game.MenuPanel());
+        this.panel
+
+        //cursor object init
+        this.cursor = this.addChild(new me.BitmapText(200, 200, { font: "wood_32x32", text: "cursor" }), 3);       
+        //update screen cursor
         me.event.subscribe(me.event.POINTERMOVE, function (event) {
             var x = Math.round(event.gameScreenX);
             var y = Math.round(event.gameScreenY);
@@ -35,12 +36,55 @@ game.ScreenController = me.Container.extend({
             game.currentController.cursor.pos.set(x, y, z);
             //console.log("update cursor pos",game.currentScreen.controller.cursor);
         });
-
+        this.panels=[
+            "build"
+        ]
+        this.activePanel=-1;
     },
+    showPanel:function(name){
+        var panelY = me.video.renderer.getHeight()-96;
+        console.log("display panel",name);
+        var index = this.panels.indexOf(name);
+        if (this.activePanel !=-1)
+        {
+            var openedPanel = this.panels.indexOf(this.activePanel);
+            this.removeChild(this[openedPanel + "Panel"]);
+        }
+        this[name + "Panel"] = this.addChild(new game[name + "Panel"](0,panelY));
+    },    
+    update:function(dt){
+        this._super(me.Container,"update",[dt]);
+        game.currentScreen.doActions();
+    },
+    draw:function(renderer){
+        this._super(me.Container,"draw",[renderer]);
+        
+    },    
     onActivateEvent: function () {
         console.log("starting game");
         this.startTime();
+        // register on the global pointermove event
+        // this.handler = me.event.subscribe(me.event.POINTERMOVE, this.pointerMove.bind(this));
+        // //register on mouse/touch event
+        // me.input.registerPointerEvent("pointerdown", this, this.onSelect.bind(this));
+        // me.input.registerPointerEvent("pointerup", this, this.onRelease.bind(this));
+        // me.input.registerPointerEvent("pointercancel", this, this.onRelease.bind(this));
+
+        // call the parent function
+        this._super(me.Container, "onActivateEvent");
     },
+
+    onDeactivateEvent: function () {
+        // unregister on the global pointermove event
+        // me.event.unsubscribe(this.handler);
+        // // release pointer events
+        // me.input.releasePointerEvent("pointerdown", this);
+        // me.input.releasePointerEvent("pointerup", this);
+        // me.input.releasePointerEvent("pointercancel", this);
+
+        // call the parent function
+        this._super(me.Container, "onDeactivateEvent");
+    },    
     startTime:function(){
         this.minutTimeout = me.timer.setInterval(this.updateTime.bind(this),game.devData.baseSpeed * game.data.options.speed);
 

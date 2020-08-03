@@ -19,6 +19,7 @@ game.actions.zoomAction = function(f){
     game.actions.moveAction(0,0);
 };
 game.actions.moveAction = function(vx,vy){
+    game.currentScreen.currentLevel.zoom = game.currentScreen.currentLevel.zoom||1;
     //console.log("move ",vx,vy,this);
     var v = new me.Vector2d(vx,vy);
     //console.log("game currentScreen level",game.currentScreen.level);

@@ -159,18 +159,22 @@ game.tools.build_relief_map = me.Container.extend({
             }
         }
         //add the cells to the container
+        //TODO organize z order simpliest way
         for (var i = 0; i < 32; i++) {
             //pour chaque ligne en partant du haut
 
             for (var j = 0; j < 32; j++) {
                 //pour chaque cell de la ligne
-                var d = data.tiles[i][j]
-                this.addChild(new game[d.ground.type](j * 32, i * 32), i * 100);
+                var d = data.tiles[i][j];
+                //TODO ground dont need big z standard z=1 could do the stuff
+                //this.addChild(new game[d.ground.type](j * 32, i * 32), i * 100);
+                this.addChild(new game[d.ground.type](j * 32, i * 32), 1);
                 if (d.layers.length > 0) {
                     for (var z = 0; z < d.layers.length; z++) {
 
                         //console.log("add tree",d.layers[z].type);
-                        this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i * 100 + 1 + z);
+                        this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i*10+ 10 + z);
+                        //this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i * 100 + 1 + z);
                     }
                 }
                 //this.addChild(new game.GroundCell(j*32,i*32),i);

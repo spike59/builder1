@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="16" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="2">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="16" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="10">
  <editorsettings>
   <export target="lvl_texture_ui01.json" format="json"/>
  </editorsettings>
  <objectgroup id="3" name="frames">
   <object id="1" name="fleche_droite" x="0" y="0" width="32" height="32"/>
+  <object id="2" name="icon_build" x="32" y="0" width="32" height="32"/>
+  <object id="3" name="icon_population" x="64" y="0" width="32" height="32"/>
+  <object id="4" name="icon_stats" x="96" y="0" width="32" height="32"/>
+  <object id="5" name="icon_harvest" x="128" y="0" width="32" height="32"/>
+  <object id="6" name="icon_seeds" x="160" y="0" width="32" height="32"/>
+  <object id="7" name="icon_danger" x="192" y="0" width="32" height="32"/>
+  <object id="8" name="icon_map" x="224" y="0" width="32" height="32"/>
+  <object id="9" name="icon_meteo" x="256" y="0" width="32" height="32"/>
  </objectgroup>
  <imagelayer id="2" name="texture">
   <image source="../img/texture_ui01.png" width="512" height="512"/>

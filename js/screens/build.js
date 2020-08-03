@@ -27,17 +27,18 @@ game.BuildScreen = me.Stage.extend({
 
 
         //tests stuff
-        this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
-        this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
-        //add the hud to the screen     
-        this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
+        //this.text = me.game.world.addChild(new me.BitmapText(200, 200, {font:"wood_32x32", text:"screen text"}),2);
+        //this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
+        //add the hud to the screen   controller is the hud so no need for HUD object  
+        //this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
         //add th controller layer to the screen
         this.controller = me.game.world.addChild(new game.ScreenController());
         //folow the cursor
-
+        //controller manage the cursor
         //start the game cycles
-        
+        //controller manage time events
         console.log("screen",this);
+        console.log("controller",this.controller);
     }, //fin onLevelLoaded
     addAction:function(a){
         if (this.currentActions.indexOf(a)== -1)

@@ -34,8 +34,10 @@ game.tools.add_characters = function(level){
     for (var c=0;c<characters_spawns.length;c++){
         var char = characters_spawns[c];
         console.log("add character",char.x,char.y);
-        level.addChild(new game.CharacterEntity(char.x,char.y),char.y*100+2);
+        //level.addChild(new game.CharacterEntity(char.x,char.y),char.y*100+2);
+        level.addChild(new game.CharacterEntity(char.x,char.y),char.y*10+10+1);
     };
+    //test random characters
     level.addChild(new game.CharacterEntity(0,0),0+1);
     level.addChild(new game.CharacterEntity(5,5),5*100+1);
     level.addChild(new game.CharacterEntity(10,10),10*100+1);

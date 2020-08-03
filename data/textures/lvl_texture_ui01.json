@@ -1,4 +1,4 @@
-{ "compressionlevel":-1,
+{ "compressionlevel":0,
  "editorsettings":
     {
      "export":
@@ -25,6 +25,94 @@
                  "width":32,
                  "x":0,
                  "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":2,
+                 "name":"icon_build",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":3,
+                 "name":"icon_population",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":4,
+                 "name":"icon_stats",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":5,
+                 "name":"icon_harvest",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":128,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":6,
+                 "name":"icon_seeds",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":160,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":7,
+                 "name":"icon_danger",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":192,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":8,
+                 "name":"icon_map",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":224,
+                 "y":0
+                }, 
+                {
+                 "height":32,
+                 "id":9,
+                 "name":"icon_meteo",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":256,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -43,7 +131,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":2,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.3.1",
