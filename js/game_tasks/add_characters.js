@@ -1,26 +1,26 @@
 game.tools = game.tools||{};
 
 game.tools.add_characters = function(level){
-    console.log("add characters to the level");
+    //console.log("add characters to the level");
     //get the spawn area
     var spawnData = game.currentScreen.mapData.spawnData;
-    console.log("spawn data",spawnData);
+    //console.log("spawn data",spawnData);
     var characters_count = 3;
     var characters_spawns =[];
     for (var n=0;n<characters_count;n++){
         var ok=false;
         while(!ok)
         {
-            console.log("search valid spawn");
+            //console.log("search valid spawn");
             var x = Math.floor(Math.random()*spawnData.w)+ spawnData.x;
             var y = Math.floor(Math.random()*spawnData.h)+ spawnData.y;
-            console.log("try spawn",x,y);
+            //console.log("try spawn",x,y);
             //check if it was used
             var test = true;
             for(var t=0;t<characters_spawns.length;t++){
                 if (x == t.x && y == t.y)
                 {
-                    console.log("used spawn");
+                    //console.log("used spawn");
                    test=false;
                 }
             };
@@ -33,7 +33,7 @@ game.tools.add_characters = function(level){
     console.log("final characters spawns",characters_spawns);
     for (var c=0;c<characters_spawns.length;c++){
         var char = characters_spawns[c];
-        console.log("add character",char.x,char.y);
+        //console.log("add character",char.x,char.y);
         //level.addChild(new game.CharacterEntity(char.x,char.y),char.y*100+2);
         level.addChild(new game.CharacterEntity(char.x,char.y),char.y*10+10+1);
     };

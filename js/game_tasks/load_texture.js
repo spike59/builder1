@@ -16,12 +16,12 @@ game.utils.load_texture_level = function (texture_name, pivot) {
       };
     var texture_pivot = pivot || { "x": 0, "y": 0 };
 
-    console.log("loading texture " + texture_name);
+    //console.log("loading texture " + texture_name);
 
     var texture_data = me.loader.getJSON("lvl_" + texture_name);
 
 
-    console.log("texture_data", texture_data);
+    //console.log("texture_data", texture_data);
 
     for (i = 0; i < texture_data.layers.length; i++) {
 
@@ -50,7 +50,7 @@ game.utils.load_texture_level = function (texture_name, pivot) {
 
 
     }//fin for layers
-    console.log("DATA", data);
+    //console.log("DATA", data);
     game.textures[texture_name] = new me.video.renderer.Texture(
         data,
         me.loader.getImage(texture_name)

@@ -41,15 +41,15 @@ game.tools.build_relief_map = me.Container.extend({
             "max_radius": 5
         };
         var spots_count = water_options.min_spots + Math.floor(Math.random() * (water_options.max_spots - water_options.min_spots));
-        console.log("spots_count", spots_count);
+        console.log("water spots_count", spots_count);
         for (var i = 0; i < spots_count; i++) {
 
             var rx = Math.floor(Math.random() * map.w);
             var ry = Math.floor(Math.random() * map.h);
-            console.log("add water spot", rx, ry);
-            console.log("x y", rx, ry);
+            //console.log("add water spot", rx, ry);
+            //console.log("x y", rx, ry);
             var radius = water_options.min_radius + Math.floor(Math.random() * (water_options.max_radius - water_options.min_radius));
-            console.log("radius", radius);
+            //console.log("radius", radius);
             for (var y = ry - radius; y < ry + radius; y++) {
                 //console.log("try y",y);
                 for (var x = rx - radius; x < rx + radius; x++) {
@@ -86,7 +86,7 @@ game.tools.build_relief_map = me.Container.extend({
 
                 var d = data.tiles[i][j];
                 if (d.ground.type == "GroundCell") {
-                    console.log("case ok add tree");
+                    //console.log("case ok add tree");
                     //si c est du sol on ajoute un layer d arbre en fonction du purcentage de remplissage
                     if (Math.random() * 100 < grass_options.max) {
                         var model = Math.floor(Math.random() * grass_options.models) + 1;
@@ -138,13 +138,13 @@ game.tools.build_relief_map = me.Container.extend({
             y:map.h-5
         };
         data.spawnData= spawn_options;
-        console.log("spawn options",spawn_options);
+        //console.log("spawn options",spawn_options);
         for (var j=spawn_options.y;j<spawn_options.h + spawn_options.y;j++){
         
-            console.log("spawn line",j);
+            //console.log("spawn line",j);
             
             for (var i=spawn_options.x;i<spawn_options.w +spawn_options.x;i++){
-                console.log("add spawn cell",i,j);
+                //console.log("add spawn cell",i,j);
                 
                 data.tiles[j][i]={
                     "ground": {
@@ -159,21 +159,24 @@ game.tools.build_relief_map = me.Container.extend({
             }
         }
         //add the cells to the container
+        this.cells = [];
         //TODO organize z order simpliest way
         for (var i = 0; i < 32; i++) {
             //pour chaque ligne en partant du haut
-
+            this.cells[i]=[];
             for (var j = 0; j < 32; j++) {
                 //pour chaque cell de la ligne
                 var d = data.tiles[i][j];
+                this.cells[i][j]={};
                 //TODO ground dont need big z standard z=1 could do the stuff
                 //this.addChild(new game[d.ground.type](j * 32, i * 32), i * 100);
-                this.addChild(new game[d.ground.type](j * 32, i * 32), 1);
+                this.cells[i][j].ground =  this.addChild(new game[d.ground.type](j * 32, i * 32), 1);
                 if (d.layers.length > 0) {
+                    this.cells[i][j].layers = [];
                     for (var z = 0; z < d.layers.length; z++) {
 
                         //console.log("add tree",d.layers[z].type);
-                        this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i*10+ 10 + z);
+                        this.cells[i][j].layers[z] = this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i*10+ 10 + z);
                         //this.addChild(new game[d.layers[z].type](j * 32, i * 32, d.layers[z].settings), i * 100 + 1 + z);
                     }
                 }
@@ -186,6 +189,8 @@ game.tools.build_relief_map = me.Container.extend({
         txt.anchorPoint.set(0, 0);
         this.text = this.addChild(txt);
         this.test = this.addChild(new game.testRenderable(100, 100));
+
+       
     },
     update: function (dt) {
         this._super(me.Container, "update", [dt]);
@@ -193,8 +198,34 @@ game.tools.build_relief_map = me.Container.extend({
     },
     draw: function (renderer) {
         this._super(me.Container, "draw", [renderer]);
-    }
+    },
+    //NEED TO CREATE A BASE LEVEL CONTAINER CLASS for levels methods(from tiled and generated)
+    onSelect : function(e){
+        console.log("select event",e);
+        var x = e.gameX;
+        var y = e.gameY;
+        console.log("clic on",x,y);
+        var cellX = Math.floor(x/32);
+        var cellY = Math.floor(y/32);
+        console.log("cell coords",cellX,cellY);
+        //game.currentScreen.currentLevel.selectCell(4,5);
+        this.selectCell(cellX,cellY);
 
+    },
+    selectCell:function(x,y){
+        console.log("selecting cell");
+        this.cells[y][x].ground.selected = true;
+    },
+    onActivateEvent : function(){
+        console.log("level On activate");
+        me.input.registerPointerEvent("pointerdown", this, this.onSelect.bind(this));
+        this._super(me.Container, "onActivateEvent");
+    },
+    onDeactivateEvent : function(){
+        console.log("level On DEactivate");
+        me.input.releasePointerEvent("pointerdown", this);
+        this._super(me.Container, "onDeactivateEvent");
+    }
 });
 game.testRenderable = me.Renderable.extend({
     init: function (x, y) {

@@ -16,7 +16,10 @@ game.BuildScreen = me.Stage.extend({
         this.currentActions=[];
         
         //add the base level to the screen relief data
-        this.currentLevel = me.game.world.addChild(new game.tools.build_relief_map(),1);
+        this.level = new game.tools.build_relief_map();
+        //game.tools.addLevelSelect(this.level);
+        console.log("UPDATED LEVEL",this.level);
+        this.currentLevel = me.game.world.addChild(this.level,1);
 
 
         //load the game data
@@ -32,8 +35,12 @@ game.BuildScreen = me.Stage.extend({
         //this.test = me.game.world.addChild(new game.testRenderable(50,50),3);
         //add the hud to the screen   controller is the hud so no need for HUD object  
         //this.HUD = me.game.world.addChild( new game.HUD.Container(),4);
-        //add th controller layer to the screen
+        
+        //add th controller layer to the screen -> move zoom the level and add ui /start time
         this.controller = me.game.world.addChild(new game.ScreenController());
+        
+        //add select event to the level
+        
         //folow the cursor
         //controller manage the cursor
         //start the game cycles

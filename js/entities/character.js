@@ -62,8 +62,8 @@ game.CharacterEntity = me.Container.extend({
         this.anchorPoint.set(0, 1);
         
         //this.renderable = this.addChild(new game.WaterCell(128,128));
-        console.log("textures",game.textures);
-        console.log("texture perso",game.textures.character_test);
+        //console.log("textures",game.textures);
+        //console.log("texture perso",game.textures.character_test);
         //this.renderable = this.addChild(new game.CharacterRenderable(128,128));
         this.renderableData = game.textures.character_test.createAnimationFromName(
             ["character_base_down_01","character_base_down_02","character_base_down_03","character_base_down_04"]
@@ -81,7 +81,7 @@ game.CharacterEntity = me.Container.extend({
         //this.pos.z = this.currentCell.y *100 +5;
     },
     draw:function(renderer){
-        
+        //TODO ??? ca marche pas
         renderer.setColor('#312618');
         renderer.strokeRect(this.x,this.y,32,32);
         this._super(me.Container, "draw",[renderer]);   

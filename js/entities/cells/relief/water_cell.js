@@ -1,6 +1,6 @@
 game.WaterCell = me.Renderable.extend({
     init:function(x,y,settings){
-        console.log("init ground renderable");
+        //console.log("init water renderable");
         var sets = settings||{};
         this.x = x;
         this.y = y;

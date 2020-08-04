@@ -6,7 +6,7 @@ game.buildPanel = me.Container.extend({
      * constructor
      */
     init: function(x, y) {
-        console.log("init build panel");
+        //console.log("init build panel");
         this.sets = {
             x:x,
             y:y,
@@ -22,7 +22,7 @@ game.buildPanel = me.Container.extend({
         //get panels items
         //need to add game.data.technology -> availables builds stuffs
         this.items = game.data.technology.builds
-        console.log("builds items",this.items);
+        //console.log("builds items",this.items);
         //add left and right arrow if items > width
         //one item is 64*64
         //get screeen width /64 if > 1 then arrows
