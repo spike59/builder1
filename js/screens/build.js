@@ -6,6 +6,7 @@ game.BuildScreen = me.Stage.extend({
         game.currentScreen  = this;
         //load game data
         game.data.score = 0;
+        game.data.technology = game.tools.buildTechnologyTree();
         //add bg color while loading level
         //this.bg_color = me.game.world.addChild(new me.ColorLayer("bg_color", new me.Color(60,90,90,1)),0);
         //prepare actions object

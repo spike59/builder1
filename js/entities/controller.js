@@ -24,7 +24,7 @@ game.ScreenController = me.Container.extend({
         this.clock = this.addChild(new game.ClockPanel(0,midY));
         
         this.menu = this.addChild(new game.MenuPanel());
-        this.panel
+        
 
         //cursor object init
         this.cursor = this.addChild(new me.BitmapText(200, 200, { font: "wood_32x32", text: "cursor" }), 3);       
@@ -34,23 +34,42 @@ game.ScreenController = me.Container.extend({
             var y = Math.round(event.gameScreenY);
             var z = game.currentController.cursor.pos.z;
             game.currentController.cursor.pos.set(x, y, z);
-            //console.log("update cursor pos",game.currentScreen.controller.cursor);
         });
         this.panels=[
             "build"
         ]
         this.activePanel=-1;
     },
-    showPanel:function(name){
+    togglePanel:function(name){
         var panelY = me.video.renderer.getHeight()-96;
-        console.log("display panel",name);
-        var index = this.panels.indexOf(name);
+        
+        var index = this.panels.indexOf(name);       
+        
+
+        console.log("toggle panel-> this.panels",this.panels);
+        console.log("toggle panel-> this.activePanel",this.activePanel);
+        console.log("new panel name",name);
+        console.log("new panel index",index);
+        this.oldPanel = this.activePanel;
+        //si ya deja un panel on l enleve dans tous les cas
         if (this.activePanel !=-1)
         {
-            var openedPanel = this.panels.indexOf(this.activePanel);
-            this.removeChild(this[openedPanel + "Panel"]);
+            console.log("remove panel id",this.activePanel)
+            //var openedPanel = this.panels.indexOf(this.activePanel);
+            var openedPanelName = this.panels[this.activePanel];
+            console.log("remove panel name",openedPanelName);
+            this.removeChild(this[openedPanelName + "Panel"]);
+            
+            this.activePanel =-1;
+            
         }
-        this[name + "Panel"] = this.addChild(new game[name + "Panel"](0,panelY));
+        //si cest un nvo panel on la ffiche sinon on fais rien
+        if (this.oldPanel != index ){
+            console.log("affichage nvo panel",name,index);
+            this[name + "Panel"] = this.addChild(new game[name + "Panel"](0,panelY));
+            this.activePanel = index;
+        }
+                
     },    
     update:function(dt){
         this._super(me.Container,"update",[dt]);
@@ -63,26 +82,10 @@ game.ScreenController = me.Container.extend({
     onActivateEvent: function () {
         console.log("starting game");
         this.startTime();
-        // register on the global pointermove event
-        // this.handler = me.event.subscribe(me.event.POINTERMOVE, this.pointerMove.bind(this));
-        // //register on mouse/touch event
-        // me.input.registerPointerEvent("pointerdown", this, this.onSelect.bind(this));
-        // me.input.registerPointerEvent("pointerup", this, this.onRelease.bind(this));
-        // me.input.registerPointerEvent("pointercancel", this, this.onRelease.bind(this));
-
-        // call the parent function
         this._super(me.Container, "onActivateEvent");
     },
 
     onDeactivateEvent: function () {
-        // unregister on the global pointermove event
-        // me.event.unsubscribe(this.handler);
-        // // release pointer events
-        // me.input.releasePointerEvent("pointerdown", this);
-        // me.input.releasePointerEvent("pointerup", this);
-        // me.input.releasePointerEvent("pointercancel", this);
-
-        // call the parent function
         this._super(me.Container, "onDeactivateEvent");
     },    
     startTime:function(){

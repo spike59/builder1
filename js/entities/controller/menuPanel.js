@@ -18,8 +18,8 @@ game.MenuPanel = me.Container.extend({
         this.buildButton = this.addChild(new game.controller.MenuButton(160,0,"build",this));
    
     },
-    showPanel:function(name){
-        game.currentController.showPanel(name);
+    togglePanel:function(name){
+        game.currentController.togglePanel(name);
     },    
     /**
      * update function

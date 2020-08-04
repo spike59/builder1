@@ -3,8 +3,7 @@
     {
      "export":
         {
-         "format":"json",
-         "target":"lvl_texture_ui01.json"
+         "format":"json"
         }
     },
  "height":16,
@@ -18,7 +17,7 @@
                 {
                  "height":32,
                  "id":1,
-                 "name":"fleche_droite",
+                 "name":"wood",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -133,7 +132,7 @@
         }, 
         {
          "id":2,
-         "image":"..\/img\/texture_ui01.png",
+         "image":"..\/img\/game_items01.png",
          "name":"texture",
          "opacity":1,
          "type":"imagelayer",

@@ -9,15 +9,14 @@ game.controller.MenuButton = me.GUI_Object.extend({
             this.parent= parent;
             var texture = game.textures.texture_ui01;
             var bt={};
-            
+            console.log(parent);
             this.region = "icon_" + name;
-            this._super(me.GUI_Object, "init", [x, y, {
+            this._super(me.GUI_Object, "init", [x + parent.sets.x, y + parent.sets.y, {
                 image: texture,
                 region: this.region,
                 name:this.name
             }]);
-            //set floating to false
-            this.floating = false;
+
             this.region = texture.getRegion(this.region);
             if (bt.label) {
                 //on verra aprés pour la police
@@ -47,7 +46,7 @@ game.controller.MenuButton = me.GUI_Object.extend({
     },
     onClick: function () {
         console.log("clic",this.name,this);
-        this.parent.showPanel(this.name);
+        this.parent.togglePanel(this.name);
         return false;
     },
     onRelease: function () {
