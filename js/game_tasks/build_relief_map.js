@@ -158,6 +158,56 @@ game.tools.build_relief_map = me.Container.extend({
                 
             }
         }
+        //ad border cells for tests
+        //top border
+        for (var i=0;i<map.w;i++)
+        {
+            data.tiles[0][i]={
+                "ground": {
+                    "type": "ColorCell",
+                    "settings":{
+                        "color":[255,255,255,1]
+                    }
+                },
+                "layers": []      
+            };            
+        }
+        for (var i=0;i<map.w;i++)
+        {
+            data.tiles[map.h-1][i]={
+                "ground": {
+                    "type": "ColorCell",
+                    "settings":{
+                        "color":[255,255,255,1]
+                    }
+                },
+                "layers": []      
+            };            
+        }
+        for (var i=0;i<map.h;i++)
+        {
+            data.tiles[i][0]={
+                "ground": {
+                    "type": "ColorCell",
+                    "settings":{
+                        "color":[255,255,255,1]
+                    }
+                },
+                "layers": []      
+            };            
+        }
+        for (var i=0;i<map.h;i++)
+        {
+            data.tiles[i][map.w-1]={
+                "ground": {
+                    "type": "ColorCell",
+                    "settings":{
+                        "color":[255,255,255,1]
+                    }
+                },
+                "layers": []      
+            };            
+        }
         //add the cells to the container
         this.cells = [];
         //TODO organize z order simpliest way
@@ -170,7 +220,7 @@ game.tools.build_relief_map = me.Container.extend({
                 this.cells[i][j]={};
                 //TODO ground dont need big z standard z=1 could do the stuff
                 //this.addChild(new game[d.ground.type](j * 32, i * 32), i * 100);
-                this.cells[i][j].ground =  this.addChild(new game[d.ground.type](j * 32, i * 32), 1);
+                this.cells[i][j].ground =  this.addChild(new game[d.ground.type](j * 32, i * 32,d.ground.settings), 1);
                 if (d.layers.length > 0) {
                     this.cells[i][j].layers = [];
                     for (var z = 0; z < d.layers.length; z++) {
@@ -199,22 +249,78 @@ game.tools.build_relief_map = me.Container.extend({
     draw: function (renderer) {
         this._super(me.Container, "draw", [renderer]);
     },
-    //NEED TO CREATE A BASE LEVEL CONTAINER CLASS for levels methods(from tiled and generated)
+    //TODO NEED TO CREATE A BASE LEVEL CONTAINER CLASS for levels methods(from tiled and generated)
     onSelect : function(e){
         console.log("select event",e);
+        console.log("current zoom",this.zoom);
+       
+        var x4 = e.pos.x;
+        var y4= e.pos.y;
+        console.log("clic pos",x4,y4);
+        console.log("viewport pos",me.game.viewport.pos.x,me.game.viewport.pos.y);
+        var w =   me.game.viewport.pos.x + x4/this.zoom;
+        var h =   me.game.viewport.pos.y + y4/this.zoom;
+        console.log("w",w,h);
+
+        var cellX = Math.floor(w/32);
+        var cellY = Math.floor(h/32);
+        console.log("cell coords",cellX,cellY);
+        this.selectCell(cellX,cellY);
+
+    },
+    onSelect0 : function(e){
+        console.log("select event",e);
+        console.log("current zoom",this.zoom);
         var x = e.gameX;
         var y = e.gameY;
-        console.log("clic on",x,y);
+        console.log("x y * zoom",x*this.zoom,y*this.zoom);
+        console.log("game X Y",x,y);
+        var x2 = e.gameLocalX;
+        var y2 = e.gameLocalY;
+        console.log("gameLocal X Y",x2,y2);
+        var x3 = e.gameWorldX;
+        var y3 = e.gameWorldY;
+        console.log("gameWorld X Y",x3,y3);        
+        var x4 = e.pos.x;
+        var y4= e.pos.y;
+        console.log("clic pos",x4,y4);
+        console.log("viewport pos",me.game.viewport.pos.x,me.game.viewport.pos.y);
+        var w =   me.game.viewport.pos.x + x4/this.zoom;
+        var h =   me.game.viewport.pos.y + y4/this.zoom;
+        console.log("w",w,h);
+
+
+        console.log("w test ",1024*this.zoom-960*this.zoom+x4,1024*this.zoom-640*this.zoom+y4);
+        console.log("test /32",(1024*this.zoom-960*this.zoom+x4)/32,(1024*this.zoom-640*this.zoom+y4)/32);
+        
+        
+        
+        console.log("viewport localto world",me.game.viewport.localToWorld(x,y));
+        var mapCoords = me.game.viewport.localToWorld(x,y);
+        console.log("viewport local to world *zoom",mapCoords.x*this.zoom,mapCoords.y*this.zoom);
+
+        var mapX = mapCoords.x -(me.game.viewport.pos.x*this.zoom);
+        var mapY = mapCoords.y -me.game.viewport.pos.y*this.zoom;
+        // var mapX = (mapCoords.x * this.zoom) -me.game.viewport.pos.x;
+        // var mapY = (mapCoords.y * this.zoom) -me.game.viewport.pos.y;
+        //var mapX = (mapCoords.x  -me.game.viewport.pos.x)* this.zoom;
+        //var mapY = (mapCoords.y  -me.game.viewport.pos.y) * this.zoom;
+        console.log("map coords cell",Math.floor(mapX/32),Math.floor(mapY/32));
         var cellX = Math.floor(x/32);
         var cellY = Math.floor(y/32);
         console.log("cell coords",cellX,cellY);
+        console.log("cells coords *zoom",cellX * this.zoom,cellY*this.zoom);
+        console.log("cells coords /zoom",cellX / this.zoom,cellY/this.zoom);
+        console.log("cells coords *1/zoom",cellX *1/ this.zoom,cellY*1/this.zoom);
         //game.currentScreen.currentLevel.selectCell(4,5);
         this.selectCell(cellX,cellY);
 
     },
     selectCell:function(x,y){
         console.log("selecting cell");
-        this.cells[y][x].ground.selected = true;
+        game.currentScreen.controller.currentTool.onSelect(x,y);
+        
+        //this.cells[y][x].ground.selected = true;
     },
     onActivateEvent : function(){
         console.log("level On activate");

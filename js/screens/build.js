@@ -17,10 +17,11 @@ game.BuildScreen = me.Stage.extend({
         
         //add the base level to the screen relief data
         this.level = new game.tools.build_relief_map();
+        this.level.zoom =1;
         //game.tools.addLevelSelect(this.level);
         console.log("UPDATED LEVEL",this.level);
         this.currentLevel = me.game.world.addChild(this.level,1);
-
+        
 
         //load the game data
 
@@ -38,7 +39,12 @@ game.BuildScreen = me.Stage.extend({
         
         //add th controller layer to the screen -> move zoom the level and add ui /start time
         this.controller = me.game.world.addChild(new game.ScreenController());
-        
+        //me.game.viewport.follow(this.controller.cursor, me.game.viewport.AXIS.BOTH,0.1);
+        me.game.viewport.anchorPoint.set(0,0);
+        me.game.viewport.pos.x=0;
+        me.game.viewport.pos.y=0;
+        me.game.viewport.setBounds(0,0,1024,1024);
+
         //add select event to the level
         
         //folow the cursor
@@ -49,16 +55,21 @@ game.BuildScreen = me.Stage.extend({
         console.log("controller",this.controller);
     }, //fin onLevelLoaded
     addAction:function(a){
+        //console.log("add action",a);
         if (this.currentActions.indexOf(a)== -1)
         {
             this.currentActions.push(a);
         }        
     },
     doActions:function(){
+        //console.log("do actions",this.currentActions);
         for (var i=0;i<this.currentActions.length;i++)
         {
             var a = this.currentActions[i];
+            if (this.actions[a]!=undefined)
+            {
             this.actions[a]();
+            }
         }      
     },
     removeAction:function(a){

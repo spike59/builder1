@@ -3,7 +3,6 @@
         {
             "action": "left",
             "keys": [
-                "LEFT",
                 "Q"
             ],
             "lock": false
@@ -11,7 +10,6 @@
         {
             "action": "right",
             "keys": [
-                "RIGHT",
                 "D"
             ],
             "lock": false
@@ -19,7 +17,6 @@
         {
             "action": "up",
             "keys": [
-                "UP",
                 "Z"
             ],
             "lock": false
@@ -27,8 +24,64 @@
         {
             "action": "down",
             "keys": [
-                "DOWN",
                 "S"
+            ],
+            "lock": false
+        },
+        {
+            "action": "left2",
+            "keys": [
+                "LEFT",
+                "Q"
+            ],
+            "lock": false
+        },
+        {
+            "action": "right2",
+            "keys": [
+                "RIGHT"
+            ],
+            "lock": false
+        },
+        {
+            "action": "up2",
+            "keys": [
+                "UP"
+            ],
+            "lock": false
+        },
+        {
+            "action": "down2",
+            "keys": [
+                "DOWN"
+            ],
+            "lock": false
+        },
+        {
+            "action": "left0",
+            "keys": [
+                "NUMPAD4"
+            ],
+            "lock": false
+        },
+        {
+            "action": "right0",
+            "keys": [
+                "NUMPAD6"
+            ],
+            "lock": false
+        },
+        {
+            "action": "up0",
+            "keys": [
+                "NUMPAD8"
+            ],
+            "lock": false
+        },
+        {
+            "action": "down0",
+            "keys": [
+                "NUMPAD2"
             ],
             "lock": false
         },
@@ -220,53 +273,53 @@
             "lock": true
         },
         {
-            "action": "left",
+            "action": "left2",
             "type": "axes",
             "code": "me.input.GAMEPAD.AXES.RX",
             "threshold": -0.5,
             "lock": false
         },
         {
-            "action": "right",
+            "action": "right2",
             "type": "axes",
             "code": "me.input.GAMEPAD.AXES.RX",
             "threshold": 0.5,
             "lock": false
         },
         {
-            "action": "up",
+            "action": "up2",
             "type": "axes",
             "code": "me.input.GAMEPAD.AXES.RY",
             "threshold": -0.5,
             "lock": false
         },
         {
-            "action": "down",
+            "action": "down2",
             "type": "axes",
             "code": "me.input.GAMEPAD.AXES.RY",
             "threshold": 0.5,
             "lock": false
         },
         {
-            "action": "left",
+            "action": "left0",
             "type": "buttons",
             "code": "me.input.GAMEPAD.BUTTONS.LEFT",
             "lock": false
         },
         {
-            "action": "right",
+            "action": "right0",
             "type": "buttons",
             "code": "me.input.GAMEPAD.BUTTONS.RIGHT",
             "lock": false
         },
         {
-            "action": "up",
+            "action": "up0",
             "type": "buttons",
             "code": "me.input.GAMEPAD.BUTTONS.UP",
             "lock": true
         },
         {
-            "action": "down",
+            "action": "down0",
             "type": "buttons",
             "code": "me.input.GAMEPAD.BUTTONS.DOWN",
             "lock": true

@@ -53,6 +53,10 @@ game.ScreenController = me.Container.extend({
             "build"
         ]
         this.activePanel = -1;
+        this.currentTool = new game.controller.tools.defaultTool();
+    },
+    selectEvent:function(x,y){
+
     },
     togglePanel: function (name) {
         var panelY = me.video.renderer.getHeight() - 96;

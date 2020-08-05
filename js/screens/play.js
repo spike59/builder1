@@ -11,7 +11,7 @@ game.PlayScreen = me.Stage.extend({
         this.level = new me.Container();
         this.level.name = "level";
         me.game.onLevelLoaded = this.onLevelLoaded.bind(this);
-        me.levelDirector.loadLevel("default_map1", { container: this.level, setViewportBounds:false}); 
+        me.levelDirector.loadLevel("default_map1", { container: this.level, setViewportBounds:true}); 
         //prepare actions object
         this.actions={};
         //load start actions
@@ -32,6 +32,8 @@ game.PlayScreen = me.Stage.extend({
         this.HUD = me.game.world.addChild( new game.HUD.Container(),2);
         //add th controller layer to the screen
         this.controller = me.game.world.addChild(new game.ScreenController());
+        //game.actions.updateViewport();
+        
         //start the game cycles
 
         console.log("screen",this);
